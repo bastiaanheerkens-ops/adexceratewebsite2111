@@ -1,66 +1,447 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AdExcelerate | AdTech Consultant & Interim Specialist</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adexcelerate | AdTech & Digital Media Consultancy</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+    
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              brand: {
-                900: '#0B1E3D', // Deep Navy (Header/Footer)
-                800: '#162a4f', // Slightly lighter navy
-                700: '#334155', // Slate text
-                100: '#f1f5f9', // Light gray backgrounds
-                50: '#f8fafc',  // White-ish backgrounds
-                accent: '#3b82f6', // Bright Blue for highlights
-              }
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-              serif: ['Merriweather', 'serif'],
-            },
-            backgroundImage: {
-              'tech-pattern': "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230B1E3D' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        adex: {
+                            dark: '#0f172a',   /* Slate 900 */
+                            primary: '#0ea5e9', /* Sky 500 */
+                            secondary: '#3b82f6', /* Blue 500 */
+                            accent: '#f59e0b',  /* Amber 500 */
+                            light: '#f8fafc'
+                        }
+                    }
+                }
             }
-          }
         }
-      }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
     <style>
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #f1f5f9;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #cbd5e1;
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #94a3b8;
-      }
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-    "recharts": "https://aistudiocdn.com/recharts@^3.4.1"
-  }
-}
-</script>
 </head>
-  <body class="bg-white text-slate-800 antialiased selection:bg-brand-900 selection:text-white">
-    <div id="root"></div>
-  </body>
+<body class="font-sans text-slate-600 antialiased bg-slate-50">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo Section -->
+                <div class="flex-shrink-0 flex items-center">
+                    <!-- VERVANG DEZE LINK MET JE EIGEN LOGO BESTAND (bijv: assets/logo.png) -->
+                    <img src="https://placehold.co/180x50/ffffff/0f172a?text=Adexcelerate+Logo" alt="Adexcelerate Logo" class="h-10 w-auto">
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="text-slate-600 hover:text-adex-primary font-medium transition-colors">Home</a>
+                    <a href="#about" class="text-slate-600 hover:text-adex-primary font-medium transition-colors">About Me</a>
+                    <a href="#services" class="text-slate-600 hover:text-adex-primary font-medium transition-colors">Services</a>
+                    <a href="#approach" class="text-slate-600 hover:text-adex-primary font-medium transition-colors">Approach</a>
+                    <a href="#contact" class="px-6 py-2.5 bg-slate-900 text-white rounded-full font-medium hover:bg-adex-primary transition-colors shadow-md">
+                        Contact
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100">
+            <div class="px-4 pt-2 pb-6 space-y-2 shadow-lg">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-adex-primary hover:bg-slate-50">Home</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-adex-primary hover:bg-slate-50">About Me</a>
+                <a href="#services" class="block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:text-adex-primary hover:bg-slate-50">Services</a>
+                <a href="#contact" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-adex-primary font-bold">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden hero-gradient">
+        <!-- Abstract Background Elements -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20 pointer-events-none">
+            <div class="absolute top-[-10%] right-[-5%] w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-[-10%] left-[-10%] w-[30rem] h-[30rem] bg-sky-400 rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-sky-300 text-sm font-medium mb-6">
+                        <span class="w-2 h-2 rounded-full bg-sky-400 animate-pulse"></span>
+                        AdTech Consultant & Interim Specialist
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-heading font-bold text-white leading-tight mb-6">
+                        Bridging the gap between <br>
+                        <span class="text-gradient">Tech & Commercial Ambition</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 mb-8 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        I help media companies, platforms, and retailers develop robust, future-proof AdTech ecosystems and effective monetization strategies.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#contact" class="px-8 py-4 bg-adex-primary text-white rounded-lg font-semibold hover:bg-sky-400 transition-colors shadow-lg shadow-sky-500/20">
+                            Let's Connect
+                        </a>
+                        <a href="#services" class="px-8 py-4 bg-slate-800 text-white border border-slate-700 rounded-lg font-semibold hover:bg-slate-700 transition-colors">
+                            View Services
+                        </a>
+                        <a href="https://www.linkedin.com/in/bastiaanheerkens/" target="_blank" rel="noopener noreferrer" class="px-8 py-4 bg-[#0077b5] text-white rounded-lg font-semibold hover:bg-[#006396] transition-colors shadow-lg flex items-center justify-center gap-2">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+                <!-- Hero Visual -->
+                <div class="relative hidden lg:block">
+                    <div class="relative rounded-2xl bg-slate-800/50 border border-slate-700 p-2 shadow-2xl backdrop-blur-sm">
+                        <!-- VERVANG DEZE LINK MET JE EIGEN DASHBOARD/HERO AFBEELDING (bijv: assets/dashboard.jpg) -->
+                        <img src="https://placehold.co/800x600/1e293b/ffffff?text=Dashboard+Visual+Placeholder" alt="Data Analytics Dashboard" class="rounded-xl shadow-lg opacity-90 hover:opacity-100 transition-opacity w-full h-auto">
+                        <!-- Floating Badges -->
+                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl border border-slate-100 flex items-center gap-3">
+                            <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-slate-500 font-semibold uppercase">Revenue Uplift</p>
+                                <p class="text-slate-900 font-bold">Optimized</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Intro Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="order-2 md:order-1 relative">
+                     <div class="aspect-[4/5] bg-slate-200 rounded-2xl overflow-hidden relative shadow-xl">
+                         <!-- VERVANG DEZE LINK MET JE EIGEN PROFIELFOTO (bijv: assets/bastiaan-portrait.jpg) -->
+                        <img src="https://placehold.co/600x750/cbd5e1/1e293b?text=Your+Photo+Here" alt="Bastiaan Heerkens" class="object-cover w-full h-full grayscale hover:grayscale-0 transition-all duration-500">
+                         <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900 to-transparent p-8">
+                             <p class="text-white font-heading font-bold text-xl">Bastiaan Heerkens</p>
+                             <p class="text-sky-300 text-sm">Founder & AdTech Specialist</p>
+                         </div>
+                    </div>
+                    <!-- Decorative dots -->
+                    <div class="absolute -z-10 top-[-20px] left-[-20px]">
+                        <svg width="100" height="100" fill="none">
+                            <defs>
+                                <pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <circle cx="2" cy="2" r="2" class="text-slate-200" fill="currentColor" />
+                                </pattern>
+                            </defs>
+                            <rect width="100" height="100" fill="url(#dots)" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-3xl lg:text-4xl font-heading font-bold text-slate-900 mb-6">
+                        Translating complexity into <span class="text-adex-primary">practical solutions</span>
+                    </h2>
+                    <p class="text-slate-600 text-lg mb-6 leading-relaxed">
+                        With over 18 years of experience in AdTech, digital media, and data-driven marketing, I bridge the gap between technical complexity and commercial ambition.
+                    </p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        My approach combines strategic insight with hands-on implementation, ensuring that every solution is both practical and tailored to your organization's needs. I don't just advise; I help you build sustainable improvements that empower your team to move forward independently.
+                    </p>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-adex-primary mt-1 mr-3"></i>
+                            <span class="text-slate-700">Expertise in AdTech stacks & cross-media monetization.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-adex-primary mt-1 mr-3"></i>
+                            <span class="text-slate-700">Hands-on implementation & troubleshooting.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-adex-primary mt-1 mr-3"></i>
+                            <span class="text-slate-700">Privacy-first (GDPR/TCF) targeting strategies.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-sm font-bold tracking-wide text-adex-primary uppercase mb-2">My Expertise</h2>
+                <h2 class="text-3xl lg:text-4xl font-heading font-bold text-slate-900">Comprehensive Services</h2>
+                <p class="mt-4 text-slate-600">From high-level strategy to technical execution and leadership.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 auto-rows-fr">
+                
+                <!-- Service 1: AdTech Strategy -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 card-hover flex flex-col">
+                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center text-adex-primary text-2xl mb-6">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 min-h-[3.5rem]">AdTech Strategy & Monetization Architecture</h3>
+                    <ul class="text-sm text-slate-600 space-y-3 flex-grow">
+                        <li class="flex items-start"><span class="mr-2 text-adex-primary">•</span>Design scalable AdTech stacks and cross-media monetization workflows.</li>
+                        <li class="flex items-start"><span class="mr-2 text-adex-primary">•</span>Develop future-ready business models for publishers, streamers, and AdTech vendors.</li>
+                        <li class="flex items-start"><span class="mr-2 text-adex-primary">•</span>Architect hybrid auction models enabling direct & programmatic sales.</li>
+                        <li class="flex items-start"><span class="mr-2 text-adex-primary">•</span>Launch new ad products (Addressable TV, Branded Content, Native Video).</li>
+                        <li class="flex items-start"><span class="mr-2 text-adex-primary">•</span>Advise on platform and vendor selection.</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Business Model Innovation -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 card-hover flex flex-col">
+                    <div class="w-12 h-12 bg-green-50 rounded-lg flex items-center justify-center text-green-600 text-2xl mb-6">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 min-h-[3.5rem]">Business Model Innovation & Revenue Optimization</h3>
+                    <ul class="text-sm text-slate-600 space-y-3 flex-grow">
+                        <li class="flex items-start"><span class="mr-2 text-green-500">•</span>Co-create innovative advertising propositions for CTV, mobile, web, and DOOH.</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">•</span>Build monetization frameworks for FAST, AVOD, and hybrid platforms.</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">•</span>Lead proposition development (formats, targeting, data).</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">•</span>Optimize yield with dynamic pricing and supply strategy.</li>
+                        <li class="flex items-start"><span class="mr-2 text-green-500">•</span>Align sales, product, and AdOps teams.</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Privacy & Data -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 card-hover flex flex-col">
+                    <div class="w-12 h-12 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600 text-2xl mb-6">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 min-h-[3.5rem]">Privacy-First Targeting & Data Strategy</h3>
+                    <ul class="text-sm text-slate-600 space-y-3 flex-grow">
+                        <li class="flex items-start"><span class="mr-2 text-purple-500">•</span>Implement GDPR and TCF 2.2-compliant targeting architecture.</li>
+                        <li class="flex items-start"><span class="mr-2 text-purple-500">•</span>Balance regulatory compliance with effective audience targeting.</li>
+                        <li class="flex items-start"><span class="mr-2 text-purple-500">•</span>Unlock first-party data monetization (Clean-rooms, Identity frameworks).</li>
+                        <li class="flex items-start"><span class="mr-2 text-purple-500">•</span>Guide CMP integration and consent flow optimization.</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4: Technical Execution -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 card-hover flex flex-col">
+                    <div class="w-12 h-12 bg-orange-50 rounded-lg flex items-center justify-center text-orange-500 text-2xl mb-6">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 min-h-[3.5rem]">Technical Execution & Operational Leadership</h3>
+                    <ul class="text-sm text-slate-600 space-y-3 flex-grow">
+                        <li class="flex items-start"><span class="mr-2 text-orange-500">•</span>Lead SSAI/CSAI rollouts and manage complex AdTech migrations.</li>
+                        <li class="flex items-start"><span class="mr-2 text-orange-500">•</span>Troubleshoot delivery gaps and campaign discrepancies.</li>
+                        <li class="flex items-start"><span class="mr-2 text-orange-500">•</span>Manage end-to-end implementation across owned & partner inventory.</li>
+                        <li class="flex items-start"><span class="mr-2 text-orange-500">•</span>Coach cross-functional teams (AdOps, Engineering, Sales).</li>
+                        <li class="flex items-start"><span class="mr-2 text-orange-500">•</span>Provide interim leadership during transformation/scale-up.</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5: KPI & Performance -->
+                <div class="bg-white p-8 rounded-xl shadow-sm border border-slate-100 card-hover flex flex-col md:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 bg-teal-50 rounded-lg flex items-center justify-center text-teal-500 text-2xl mb-6">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-4 min-h-[3.5rem]">Omnichannel KPI & Performance Systems</h3>
+                    <ul class="text-sm text-slate-600 space-y-3 flex-grow">
+                        <li class="flex items-start"><span class="mr-2 text-teal-500">•</span>Implement unified KPI frameworks for CTV, web, and mobile.</li>
+                        <li class="flex items-start"><span class="mr-2 text-teal-500">•</span>Deploy PowerBI dashboards connecting tech metrics to revenue.</li>
+                        <li class="flex items-start"><span class="mr-2 text-teal-500">•</span>Enable real-time optimization across all campaign types.</li>
+                        <li class="flex items-start"><span class="mr-2 text-teal-500">•</span>Harmonize targeting, measurement, and delivery infrastructure.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" class="py-20 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl lg:text-4xl font-heading font-bold mb-6">My Approach</h2>
+                    <p class="text-slate-400 text-lg mb-8 leading-relaxed">
+                        Each collaboration begins with an in-depth assessment of your current situation and ambitions. Together, we create a clear action plan.
+                    </p>
+                    
+                    <div class="space-y-8">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-adex-primary flex items-center justify-center font-bold text-white text-sm">1</div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Assessment & Analysis</h4>
+                                <p class="text-slate-400 text-sm">In-depth inventory of your current tech stack, data flows, and commercial objectives.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-adex-primary flex items-center justify-center font-bold text-white text-sm">2</div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Strategy & Roadmap</h4>
+                                <p class="text-slate-400 text-sm">Translating findings into a concrete, step-by-step plan for sustainable improvement.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-adex-primary flex items-center justify-center font-bold text-white text-sm">3</div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">Execution & Empowerment</h4>
+                                <p class="text-slate-400 text-sm">Implementing solutions and empowering your internal team to move forward independently.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative bg-slate-800 p-8 rounded-2xl border border-slate-700">
+                     <!-- Quote Block -->
+                     <i class="fas fa-quote-left text-4xl text-slate-600 mb-6 block"></i>
+                     <p class="text-xl font-medium italic text-slate-200 mb-6">
+                         "My goal is to ensure that your team can continue independently. I don't build 'black boxes', but transparent, manageable systems."
+                     </p>
+                     <div class="flex items-center gap-4">
+                         <div class="w-12 h-12 rounded-full bg-slate-700 overflow-hidden">
+                             <!-- VERVANG DEZE LINK MET JE KLEINE PROFIELFOTO/AVATAR (bijv: assets/avatar.jpg) -->
+                             <img src="https://placehold.co/100x100/cbd5e1/1e293b?text=BH" class="w-full h-full object-cover grayscale">
+                         </div>
+                         <div>
+                             <p class="text-white font-bold">Bastiaan Heerkens</p>
+                             <p class="text-adex-primary text-xs">Adexcelerate</p>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl lg:text-4xl font-heading font-bold text-slate-900 mb-4">Ready to Accelerate?</h2>
+            <p class="text-slate-600 mb-10 max-w-2xl mx-auto">
+                Let's discuss how we can optimize your AdTech stack and increase your revenue.
+            </p>
+            
+            <div class="bg-slate-50 p-8 rounded-2xl shadow-lg border border-slate-100 text-left">
+                <!-- FORMULIER AANGEPAST: Nu gekoppeld aan FormSubmit voor echte e-mail verzending -->
+                <form action="https://formsubmit.co/info@adexcelerate.com" method="POST" class="grid md:grid-cols-2 gap-6">
+                    <!-- Honeypot om spam te voorkomen (verborgen voor gebruikers) -->
+                    <input type="text" name="_honey" style="display:none">
+                    <!-- Schakel captcha uit voor een strakker design (optioneel) -->
+                    <input type="hidden" name="_captcha" value="false">
+                    <!-- Stel het onderwerp van de e-mail in -->
+                    <input type="hidden" name="_subject" value="Nieuw contactverzoek via Adexcelerate Website">
+                    <!-- Redirect gebruiker na verzenden (optioneel, anders toont FormSubmit een standaard pagina) -->
+                    <input type="hidden" name="_next" value="https://adexcelerate.com/">
+
+                    <div class="col-span-2 md:col-span-1">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                        <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-adex-primary focus:border-transparent outline-none transition-all" placeholder="Your Name">
+                    </div>
+                    <div class="col-span-2 md:col-span-1">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                        <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-adex-primary focus:border-transparent outline-none transition-all" placeholder="name@company.com">
+                    </div>
+                    <div class="col-span-2">
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                        <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-adex-primary focus:border-transparent outline-none transition-all" placeholder="How can I help you?"></textarea>
+                    </div>
+                    <div class="col-span-2">
+                        <button type="submit" class="w-full py-4 bg-gradient-to-r from-slate-900 to-slate-800 text-white rounded-lg font-bold hover:from-adex-primary hover:to-adex-secondary transition-all shadow-lg transform hover:-translate-y-1">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="mt-12 flex justify-center gap-8">
+                <a href="https://www.linkedin.com/in/bastiaanheerkens/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-600 hover:text-adex-primary transition-colors">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                    <span class="font-medium">LinkedIn</span>
+                </a>
+                <a href="mailto:info@adexcelerate.com" class="flex items-center gap-2 text-slate-600 hover:text-adex-primary transition-colors">
+                    <i class="fas fa-envelope text-2xl"></i>
+                    <span class="font-medium">info@adexcelerate.com</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <!-- Footer Logo -->
+            <div>
+                 <!-- VERVANG DEZE LINK MET JE EIGEN WITTE LOGO BESTAND (bijv: assets/logo-white.png) -->
+                <img src="https://placehold.co/180x50/0f172a/ffffff?text=Adexcelerate+Logo" alt="Adexcelerate Logo" class="h-10 w-auto">
+            </div>
+            <div class="text-slate-400 text-sm text-center md:text-right">
+                &copy; 2025 Adexcelerate. All rights reserved.<br>
+                <span class="text-xs text-slate-500">Created for Bastiaan Heerkens</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                menu.classList.add('hidden'); // Close mobile menu on click
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body>
 </html>
